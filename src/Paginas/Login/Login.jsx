@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function LoginPage() {
   const [usuario, setUsuario] = useState("");
-  const [senha, setSenha] = useState("");
+  const [senha, setSenha] = useState(""); 
   const [cnpj, setCnpj] = useState("");
   const [usuariosSalvos, setUsuariosSalvos] = useState([]);
   const [cnpjsSalvos, setCnpjsSalvos] = useState([]);
