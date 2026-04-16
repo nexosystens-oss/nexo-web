@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from './Paginas/Login/Login.jsx';
 import BaixaFicha from './Paginas/BaixaFicha/BaixaFicha.jsx';
 
@@ -8,6 +8,7 @@ function App(){
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/baixa-ficha" element={<BaixaFicha />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }
