@@ -79,7 +79,7 @@ export async function BuscarPrestador(aIdPrestador) {
     throw new Error(erro || "Erro ao buscar Prestador");
     }  
 
-    const data = await response.json();
+    const data = await response.json(); 
     //console.log(data);
 
     return data;
