@@ -57,10 +57,20 @@ export default function BaixarFicha() {
         return;
       }
       alert("Ficha baixada com sucesso!");
+      limparFormulario();
 
     } catch (err) {
       alert(err.message);
     }
+  }
+
+  function limparFormulario() {
+    setCodigounico("");
+    setIdPrestador("");
+    setPrestador("");
+    setDescricaoFicha("");
+    setValorItem(0);
+    setValidacao([]);
   }
 
   return (
@@ -102,7 +112,7 @@ export default function BaixarFicha() {
           <i className="bx bx-user"></i>
         </div>
 
-        <button type="submit" className="baixarficha" onClick={handleBaixarFicha}> 
+        <button type="submit" className="baixarficha" onClick={handleBaixarFicha}>
           Baixar Ficha
         </button>
       </div>
