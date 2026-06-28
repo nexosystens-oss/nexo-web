@@ -11,8 +11,8 @@ export default function BaixarFicha() {
   const [validacao, setValidacao] = useState([]);
 
   async function handleBuscarItem(e) {
-    if (e.key !== "Enter") return;
     if (!codigounico) return;
+
     try {
       const retorno = await BuscarItem(codigounico);
       console.log(retorno);
@@ -29,8 +29,8 @@ export default function BaixarFicha() {
   }
 
   async function handleBuscarPrestador(e) {
-    if (e.key !== "Enter") return;
     if (!prestador) return;
+
     try {
       const retorno = await BuscarPrestador(prestador);
       console.log(retorno);
@@ -83,10 +83,20 @@ export default function BaixarFicha() {
             placeholder="Código Único"
             type="text"
             inputMode="numeric"
+            enterKeyHint="search"
             value={codigounico}
             onChange={(e) => setCodigounico(e.target.value.replace(/\D/g, ""))}
-            onKeyDown={handleBuscarItem}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") handleBuscarItem();
+            }}
           />
+          <button
+            type="button"
+            className="btn-search"
+            onClick={handleBuscarItem}
+          >
+            <i className="bx bx-search"></i>
+          </button>
         </div>
 
         <div className="dados-ficha">
@@ -96,20 +106,29 @@ export default function BaixarFicha() {
           </div>
         </div>
 
-        <div className="input-box">
+        <div className="input-box clean">
           <input
             placeholder="Usuario"
             type="text"
             name="Usuario"
             id="Usuario"
             inputMode="numeric"
+            enterKeyHint="search"
             autoComplete="username"
             value={prestador}
             onChange={(e) => setPrestador(e.target.value.replace(/\D/g, ""))}
-            onKeyDown={handleBuscarPrestador}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") handleBuscarPrestador();
+            }}
           />
-
-          <i className="bx bx-user"></i>
+         
+          <button
+            type="button"
+            className="btn-search"
+            onClick={handleBuscarPrestador}
+          >
+            <i className="bx bx-search"></i>
+          </button>          
         </div>
 
         <button type="submit" className="baixarficha" onClick={handleBaixarFicha}>
